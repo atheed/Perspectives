@@ -16,5 +16,8 @@
             ],
             "js": ["lib/jquery-2.1.4.min.js", "content.js"]
         }
-    ]
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    }
 }
