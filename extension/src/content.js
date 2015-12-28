@@ -1,3 +1,4 @@
+var textResponse;
 var jsonResponse;
 
 // sample jQuery.ajax() call to get related articles for a particular stirng
@@ -20,11 +21,32 @@ $.ajax({
     }
 });
 
+// sample jQuery.ajax() call to get important keywords in a text
+$.ajax({
+    type: "POST",
+    url: "https://gateway-a.watsonplatform.net/calls/text/TextGetRankedKeywords",
+    data: {
+        "text":"US Vice-President Joe Biden has urged Japan and South Korea to improve their relations and co-operation. Mr Biden was in Seoul on the third leg of an Asian tour dominated by tensions over China newly-declared air defence zone.",
+        "apikey":"70feaf9092b12babf41a9a9909499c1307091db0",
+        "maxRetrieve":"10",
+        "keywordExtractMode":"strict",
+        "outputMode":"json"
+    },
+    success: function (data) {
+        textResponse = JSON.stringify(data);
+    },
+    error: function () {
+        textResponse = "Error";
+    }
+});
+
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message === "clicked_browser_action") {
             console.log(jsonResponse);
+            console.log("-----------");
+            console.log(textResponse);
         }
     }
 );
