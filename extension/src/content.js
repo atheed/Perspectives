@@ -5,30 +5,6 @@ var currentUrl = window.location.href;
 
 var relatedArticles = [];
 
-$.ajax({
-    type: "POST",
-    url: "https://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords",
-    data: {
-        "url":currentUrl,
-        "apikey":"70feaf9092b12babf41a9a9909499c1307091db0",
-        "maxRetrieve":"10",
-        "keywordExtractMode":"strict",
-        "outputMode":"json"
-    },
-    success: function (data) {
-        textResponse = JSON.stringify(data);
-        var obj = $.parseJSON(textResponse);
-        var keywords = "";
-        $.each(obj.keywords, function(i, keyword) {
-            keywords = keywords + keyword.text + " ";
-        });
-        uniqueListOfWords = getUniqueKeywords(keywords);
-    },
-    error: function () {
-        textResponse = "Error";
-    }
-});
-
 function getUniqueKeywords(keywords) {
     return keywords.split(" ").filter(function(allItems,i,a){
         return i==a.indexOf(allItems);
@@ -42,6 +18,31 @@ chrome.runtime.onMessage.addListener(
             if (relatedArticles.length > 0) {
                 sendResponse(relatedArticles);
             } else {
+                $.ajax({
+                    type: "POST",
+                    url: "https://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords",
+                    async: false,
+                    data: {
+                        "url":currentUrl,
+                        "apikey":"70feaf9092b12babf41a9a9909499c1307091db0",
+                        "maxRetrieve":"10",
+                        "keywordExtractMode":"strict",
+                        "outputMode":"json"
+                    },
+                    success: function (data) {
+                        textResponse = JSON.stringify(data);
+                        var obj = $.parseJSON(textResponse);
+                        var keywords = "";
+                        $.each(obj.keywords, function(i, keyword) {
+                            keywords = keywords + keyword.text + " ";
+                        });
+                        uniqueListOfWords = getUniqueKeywords(keywords);
+                    },
+                    error: function () {
+                        textResponse = "Error";
+                    }
+                });
+
                 $.ajax({
                     type: "POST",
                     url: "https://news-api.lateral.io/recommend-by-text/",
