@@ -3,4 +3,40 @@
 Placeholder
 This is the page that displays when the extension button is clicked.
 -->
+	<head>
+		<title>Popup</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				font-size: 10pt;
+			}
+			#relatedArticles {
+				/* avoid an excessively wide status text */
+				min-width: 400px;
+				min-height: 400px;
+				max-width: 400px;
+				max-height: 400px;
+				word-wrap: normal;
+			}
+		</style>
+
+		<!--
+		- JavaScript and HTML must be in separate files: see our Content Security
+		- Policy documentation[1] for details and explanation.
+		-
+		- [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+		-->
+		<script src="../lib/jquery-2.1.4.min.js"></script>
+		<script src="popup.js"></script>
+	</head>
+	<body>
+		<h4>Related Articles</h4>
+		<p></p>
+		<div id="loadingContent">
+			Loading Content...
+		</div>
+		<div id="relatedArticles"></div>
+		<img id="image-result" hidden>
+	</body>
+
 </html>
