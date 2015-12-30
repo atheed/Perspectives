@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener(
                     }
                 });
                 
-                if(textResponse !== "Error") {
+                if (textResponse !== "Error") {
                     $.ajax({
                         type: "POST",
                         url: "https://news-api.lateral.io/recommend-by-text/",
