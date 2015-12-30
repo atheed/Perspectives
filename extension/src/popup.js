@@ -6,10 +6,8 @@ chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
     	$("#loadingContent").html("");
     	$("#relatedArticles").html("");
     	$.each(relatedArticles, function(i, article) {
-    		$("#relatedArticles").append("<a href='"  + article[1] + "'>" + article[0] + "</a>");
-    		$("#relatedArticles").append("<h6>Published on: " + article[2] + "<br />Source: " + article[3] + "</h6>");
-    		//$("#relatedArticles").append("<h6>Source: " + article[3] + "</h6>");
-    		$("#relatedArticles").append("<p></p>");
+    		$("#relatedArticles").append("<div class='article'><a class='inline-link-3' href='"  + article[1] + "'>" + article[0] + "</a><br />" + 
+    			"<h5>Published on: " + article[2] + "<br />Source: " + article[3] + "</h5>" + "<p></p>" + "</div>");
     	});
     });
 });
