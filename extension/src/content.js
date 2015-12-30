@@ -5,6 +5,9 @@ var currentUrl = window.location.href;
 
 var relatedArticles = [];
 
+var errorResponse = "Error";
+
+
 function getUniqueKeywords(keywords) {
     return keywords.split(" ").filter(function(allItems,i,a){
         return i==a.indexOf(allItems);
@@ -42,32 +45,36 @@ chrome.runtime.onMessage.addListener(
                         textResponse = "Error";
                     }
                 });
-
-                $.ajax({
-                    type: "POST",
-                    url: "https://news-api.lateral.io/recommend-by-text/",
-                    headers: { 
-                        "subscription-key": "21b109cfad5536905f5cf081ed599cee"
-                    },
-                    async: false,
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        "text":uniqueListOfWords
-                    }),
-                    success: function (data) {
-                        jsonResponse = JSON.stringify(data);
-                        var obj = $.parseJSON(jsonResponse);
-                        $.each(obj, function(i, article) {
-                            relatedArticles.push(
-                                [article.title, article.url, article.published, article.source_name]);
-                        });
-                        sendResponse(relatedArticles);
-                    },
-                    error: function () {
-                        jsonResponse = "Error";
-                    }
-                });
+                
+                if(textResponse !== "Error") {
+                    $.ajax({
+                        type: "POST",
+                        url: "https://news-api.lateral.io/recommend-by-text/",
+                        headers: { 
+                            "subscription-key": "21b109cfad5536905f5cf081ed599cee"
+                        },
+                        async: false,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            "text":uniqueListOfWords
+                        }),
+                        success: function (data) {
+                            jsonResponse = JSON.stringify(data);
+                            var obj = $.parseJSON(jsonResponse);
+                            $.each(obj, function(i, article) {
+                                relatedArticles.push(
+                                    [article.title, article.url, article.published, article.source_name]);
+                            });
+                            sendResponse(relatedArticles);
+                        },
+                        error: function () {
+                            sendResponse("Error");
+                        }
+                    });
+                } else {
+                    sendResponse("Error");
+                }
             }
         }
     }
