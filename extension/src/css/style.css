@@ -1,0 +1,61 @@
+body {
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    background-color: #eeedef;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 11pt;
+}
+
+h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15pt;
+    display: inline;
+}
+
+h5 {
+    display: inline;
+}
+
+#relatedArticles {
+    word-wrap: normal;
+}
+
+#title {
+    position: relative;
+    left: 35%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13pt;
+    color: #cc5200;
+}
+
+.article:hover {
+    background-color: #f5f4f6;
+}
+
+/* the below CSS is taken from: https://gist.github.com/groenewege/3957636 */
+.article-link {
+    display: inline;
+    position: relative;
+    padding-left: 6px;
+    text-decoration: none;
+    color: #1a7ecc;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.9);
+}
+
+.article-link:hover {
+    color: #3C9CE7;
+}
+
+.article-link:before {
+    content: "\25BA";
+    font-size: 80%;
+    display: inline;
+    padding-right: 3px;
+    pointer-events: none;
+}
+
+.article-link:hover:before {
+    color: #F2BF97;
+}
