@@ -8,6 +8,7 @@ This is the page that displays when the extension button is clicked.
         <link rel="stylesheet" href="http://css-spinners.com/css/spinner/three-quarters.css" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <style>
             body {
                 min-width: 400px;
@@ -25,32 +26,15 @@ This is the page that displays when the extension button is clicked.
             h4 {
                 font-family: 'Raleway', sans-serif;
                 font-size: 15pt;
+                display: inline;
             }
 
-            .inline-link-3 {
-                display: inline;
+            #title {
                 position: relative;
-                padding-left: 6px;
-                /* Font styles */
-                text-decoration: none;
-                color: #1a7ecc;
-                text-shadow: 0 1px 1px rgba(255,255,255,0.9);
-            }
-
-            .inline-link-3:hover {
-                color: #3C9CE7;
-            }
-
-            .inline-link-3:before {
-                content: "\25BA";
-                font-size: 80%;
-                display: inline;
-                padding-right: 3px;
-                pointer-events: none;
-            }
-
-            .inline-link-3:hover:before {
-                color: #F2BF97;
+                left: 35%;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 13pt;
+                color: #cc5200;
             }
 
             h5 {
@@ -59,12 +43,38 @@ This is the page that displays when the extension button is clicked.
             .article:hover {
                 background-color: #f5f4f6;
             }
+
+            /* from https://gist.github.com/groenewege/3957636 */
+            .article-link {
+                display: inline;
+                position: relative;
+                padding-left: 6px;
+                text-decoration: none;
+                color: #1a7ecc;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.9);
+            }
+
+            .article-link:hover {
+                color: #3C9CE7;
+            }
+
+            .article-link:before {
+                content: "\25BA";
+                font-size: 80%;
+                display: inline;
+                padding-right: 3px;
+                pointer-events: none;
+            }
+
+            .article-link:hover:before {
+                color: #F2BF97;
+            }
         </style>
         <script src="../lib/jquery-2.1.4.min.js"></script>
         <script src="popup.js"></script>
     </head>
     <body>
-        <h4>Related Articles</h4>
+        <h4>Related Articles</h4><h4 id="title">Perspectives</h4>
         <p></p>
         <div id="loadingContent">
             <div class="three-quarters-loader">

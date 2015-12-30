@@ -6,7 +6,7 @@ chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
     	$("#loadingContent").html("");
     	$("#relatedArticles").html("");
     	$.each(relatedArticles, function(i, article) {
-    		$("#relatedArticles").append("<div class='article'><a class='inline-link-3' href='"  + article[1] + "'>" + article[0] + "</a><br />" + 
+    		$("#relatedArticles").append("<div class='article'><a class='article-link' href='"  + article[1] + "'>" + article[0] + "</a><br />" + 
     			"<h5>Published on: " + article[2] + "<br />Source: " + article[3] + "</h5>" + "<p></p>" + "</div>");
     	});
     });
