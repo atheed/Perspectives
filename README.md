@@ -1,5 +1,4 @@
-# Perspectives
-**A Chrome Extension**
+<img src="/header.jpg"/>
 
 Have you ever been reading something on the internet about a particular issue, and just craved another article/piece surrounding that same issue, to give you perspective? Well, wait no longer! 
 
