@@ -14,5 +14,5 @@ Perspectives uses IBM's Watson natural language processing APIs and Lateral.io's
 - AlchemyAPI
 - Lateral.io API
 
-## Available At
+## Download from the Chrome Web Store
 https://chrome.google.com/webstore/detail/perspectives/mbbijlbjhhnpehplmmfindilpaclmkae
